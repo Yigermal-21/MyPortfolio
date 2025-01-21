@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from './Hero.module.css'
 import Profile_pic from "../../assets/img/Profile_pic.jpg";
+import Resume from '../../assets/img/Resume.png'
 
 function Hero() {
   return (
@@ -16,8 +17,8 @@ function Hero() {
           complex ideas into functional and elegant solutions. Let's build
           something amazing together!".{" "}
         </p>
-        <a href="mailto:yigermal2002@gmail.com" className={classes.contactBtn}>
-          Contact Me
+        <a href={Resume} className={classes.contactBtn}>
+          Hire Me
         </a>
       </div>
       <img src={Profile_pic} className={classes.hero_img} alt="" />

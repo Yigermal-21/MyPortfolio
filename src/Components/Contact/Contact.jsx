@@ -1,92 +1,124 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa"; // Importing icons
 import classes from "./Contact.module.css";
 import Swal from "sweetalert2";
 
 function Contact() {
+  const [loading, setLoading] = useState(false);
+
   const onSubmit = async (event) => {
     event.preventDefault();
+
+    // Get email value
+    const email = event.target.email.value;
+
+    // Check if the email is valid
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      Swal.fire(
+        "Invalid Email",
+        "Please enter a valid email address.",
+        "error"
+      );
+      return;
+    }
+
+    setLoading(true);
+
     const formData = new FormData(event.target);
     const secretKey = import.meta.env.VITE_SECRET_KEY;
-
     formData.append("access_key", secretKey);
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
-
-    // Log the payload to check its structure
-    console.log(json);
 
     try {
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: json,
       });
 
       const data = await res.json();
-      console.log(data); // Log the API response for error details
 
       if (res.ok) {
-        Swal.fire({
-          title: "Success!",
-          text: "Message Sent Successfully",
-          icon: "success",
-        });
+        Swal.fire("Thank You!", "Message Sent Successfully", "success");
         event.target.reset();
       } else {
-        Swal.fire({
-          title: "Error",
-          text: `Something went wrong: ${data.message || "Please try again."}`,
-          icon: "error",
-        });
+        Swal.fire("Error", data.message || "Please try again.", "error");
       }
     } catch (error) {
-      Swal.fire({
-        title: "Network Error",
-        text: "Unable to send message. Please check your connection.",
-        icon: "error",
-      });
+      Swal.fire("Network Error", "Unable to send message.", "error");
+    } finally {
+      setLoading(false);
     }
   };
 
+
   return (
     <section className={classes.contact} id="contact">
-      <form onSubmit={onSubmit}>
-        <h2>Contact</h2>
-        <div className={classes.input_box}>
-          <label>Full Name</label>
-          <input
-            type="text"
-            className={classes.field}
-            placeholder="Enter Your name"
-            name="name"
-            required
-          />
+      <div className={classes.contact_container}>
+        {/* Contact Information Section */}
+        <div className={classes.contact_info}>
+          <h2>Contact Info</h2>
+          <ul className={classes.info_list}>
+            <li>
+              <FaMapMarkerAlt className={classes.icon} />
+              <span> Gambia Street, Addis Ababa, Ethiopia</span>
+            </li>
+            <li>
+              <FaEnvelope className={classes.icon} />
+              <span>yigermal2002@gmail.com</span>
+            </li>
+            <li>
+              <FaPhoneAlt className={classes.icon} />
+              <span>+251 947476040</span>
+            </li>
+          </ul>
         </div>
-        <div className={classes.input_box}>
-          <label>Email Address</label>
-          <input
-            type="email"
-            className={classes.field}
-            placeholder="Enter Your email"
-            name="email"
-            required
-          />
-        </div>
-        <div className={classes.input_box}>
-          <label>Your Message</label>
-          <textarea
-            name="message"
-            className={`${classes.field} ${classes.mess}`}
-            placeholder="Enter Your Message"
-            required
-          ></textarea>
-        </div>
-        <button type="submit">Send Message</button>
-      </form>
+
+        {/* Contact Form Section */}
+        <form onSubmit={onSubmit} className={classes.contact_form}>
+          <h2>Contact Form</h2>
+          <div className={classes.input_box}>
+            <label htmlFor="name">Full Name</label>
+            <input
+              id="name"
+              type="text"
+              className={classes.field}
+              placeholder="Enter Your Name"
+              name="name"
+              required
+            />
+          </div>
+          <div className={classes.input_box}>
+            <label htmlFor="email">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              className={classes.field}
+              placeholder="Enter Your Email"
+              name="email"
+              required
+            />
+          </div>
+          <div className={classes.input_box}>
+            <label htmlFor="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              className={`${classes.field} ${classes.mess}`}
+              placeholder="Enter Your Message"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Send Message"}
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
