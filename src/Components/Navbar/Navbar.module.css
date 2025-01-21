@@ -1,0 +1,134 @@
+.navbar {
+  /* background-color: #0b2447; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 61px;
+  z-index: 2;
+  margin: 0 10px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+  flex-grow: 1; /* Allow title to take space on the left */
+}
+
+/* Menu and Toggle Button */
+.menu {
+  display: flex;
+}
+
+.menuItems {
+  display: flex;
+  gap: 47px;
+  list-style: none;
+}
+
+.menuItems a {
+  font-size: 25px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: .5s
+}
+
+.menuItems a:hover {
+  background-color: rgba(165, 215, 232, 0.7); /* Stronger background color */
+  color: #000; /* Change text color for better visibility */
+  border-radius: 6px;
+  padding: 5px 10px; /* Add padding for a button-like effect */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+}
+
+/* Toggle button (hamburger or close icon) */
+.navbar-toggle {
+  font-size: large;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block; /* Default to show on small screens */
+}
+
+/* Large screens: Hide toggle button and show menu items */
+@media (min-width: 769px) {
+  .navbar-toggle {
+    display: none; /* Hide toggle button on large screens */
+  }
+
+  .menuItems {
+    display: flex; /* Menu items will be horizontal */
+    gap: 47px;
+  }
+
+  .menu {
+    display: flex; /* Show menu items by default on large screens */
+  }
+}
+
+/* Small screens: Show title on the left and toggle button on the right */
+@media (max-width: 768px) {
+  .navbar {
+    padding-top: 16px; /* Adjust padding for smaller screens */
+  }
+
+  .title {
+    flex-grow: 1; /* Keep title on the left */
+  }
+
+  .menu {
+    display: none; /* Hide menu items by default */
+  }
+
+  .navbar-toggle {
+    display: block; /* Show the toggle button */
+  }
+
+  .menu.open {
+    display: flex; /* Show menu items when opened */
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    border-radius: 10px;
+    background: rgb(25, 55, 109);
+    background: linear-gradient(0deg, rgba(25, 55, 109, 0.2) 0%, rgba(25, 55, 109, 1) 100%);
+    padding: 24px 33px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+    position: absolute; /* Position it below the navbar */
+    top: 100%; /* Place it directly below the navbar */
+    left: 65%;
+    width: 35%; /* Make the menu take the full width */
+  }
+
+  .menuItems {
+    display: flex;
+    flex-direction: column; /* Stack items vertically in mobile view */
+    gap: 13px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menuItems a {
+    font-size: 22px; /* Adjust font size for mobile view */
+  }
+}
+/* Other existing CSS styles... */
+
+/* Hide the hamburger and close icons on large screens */
+@media (min-width: 769px) {
+  .navbarToggle {
+    display: none; /* Hide the hamburger and close icons */
+  }
+  .menuItems {
+    display: flex; /* Show menu items in a row */
+    gap: 47px;
+  }
+
+  .menu {
+    display: flex; /* Show menu items by default */
+  }
+}

@@ -1,0 +1,22 @@
+:root{
+    /*color*/
+    --color-text:#fff;
+    --color-primary:#576cbc;
+    --color-secondary:#19376d;
+    --color-dark:#0b24447;
+    --color-bg:#04152d;
+    --color-card-bg: #0a2a49; /* Project card background */
+  --color-card-hover: #123b5f; /* Project card hover effect */
+  --color-overlay: rgba(0, 0, 0, 0.7); /* Overlay on hover */
+   --color-link: #4db8ff; /* Link button color */
+  --color-link-hover: #1a8cff; /* Link button hover color */
+    /*font*/
+    --font-roboto:"Roboto";
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}

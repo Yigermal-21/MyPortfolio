@@ -1,0 +1,120 @@
+
+.container {
+  padding: 2rem;
+  background-color: var(--color-bg);
+  text-align: center;
+  color: var(--color-text);
+  margin-left: 10%;
+margin-right: 10%;
+}
+
+.heading {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+  text-transform: uppercase;
+}
+.projectImage { 
+    height: 100%; 
+    width: 100%; 
+    object-fit: cover; /* Cover the entire card without stretching */ 
+    object-position: center; /* Center the image */
+}
+.projectList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.projectCard {
+  position: relative;
+  height: 300px; /* Consistent height for all cards */
+  width: 100%; /* Responsive width */
+  border-radius: 8px;
+  overflow: hidden;
+  background-size: cover; /* Ensure the background image covers the card */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Avoid repeating the image */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    background-image 0.3s ease-in-out;
+  background-image: var(--default-background-image); /* Set the default image */
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(135deg, #4C516D, #4C516D); /* Gradient for hover */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay for text visibility */
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.projectCard:hover .overlay {
+  opacity: 1; /* Show content on hover */
+}
+
+.projectTitle {
+  font-size: 1.5rem; /* Change this to increase or decrease the title size */
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.projectDescription {
+  font-size: 1.25rem; /* Change this to adjust description size */
+  color: #cce7ff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.projectTechnologies {
+  font-size: 0.9rem;
+  color: #99d1ff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.projectLink {
+  display: inline-block;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-link);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.projectLink:hover {
+  background-color: var(--color-link-hover);
+  color: var(--color-text);
+}
+.icon {
+  font-size: 1.5rem; /* Icon size */
+}
+@media (max-width: 768px) {
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 1rem;
+  }
+
+ 
+}

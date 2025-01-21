@@ -1,0 +1,26 @@
+[
+  {
+    "title": "React",
+    "imagesrc": "../data/React.webp"
+  },
+  {
+    "title": "JavaScript",
+    "imagesrc": "../data/Javascript.webp"
+  },
+  {
+    "title": "MySQL",
+    "imagesrc": "../data/MySQL.webp"
+  },
+  {
+    "title": "HTML",
+    "imagesrc": "../data/HTML.webp"
+  },
+  {
+    "title": "CSS",
+    "imagesrc": "../data/CSS.webp"
+  },
+  {
+    "title": "Node.js",
+    "imagesrc": "../data/Node.webp"
+  }
+]

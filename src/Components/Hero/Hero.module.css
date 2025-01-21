@@ -1,0 +1,61 @@
+.container{
+position: relative;
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 49px;
+z-index: 1;
+margin-left: 10%;
+margin-right: 10%;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--color-text);
+    z-index: 1;
+}
+.title {
+    font-size: 72px; /* Large font size for the title */
+    font-weight: 800; /* Makes the text bold */
+    margin-bottom: 33px; /* Space below the title */
+    font-family: var(--font-roboto); /* Custom font, assuming the CSS variable is defined elsewhere */
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0) 120%);
+    -webkit-text-fill-color: transparent; /* Makes the text color transparent */
+    -webkit-background-clip: text; /* Ensures the gradient is clipped to the text */
+    background-clip: text; /* Adds support for non-Webkit browsers (optional, though not fully supported in all browsers) */
+}
+.description{
+    font-size: 30px;
+    font-family: var(--font-roboto);
+    margin-bottom: 52px;
+
+}
+.contactBtn{
+    text-decoration: none;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border-radius: 100px;
+    font-size: 30px;
+    font-weight: 600;
+    padding: 17px 26px;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.25);
+}
+.hero_img {
+    width: 25%; /* Fixed width */
+    border-radius: 50%;
+     
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex; /* Ensure flexbox is applied */
+        flex-direction: column-reverse; /* Stack child elements vertically in reverse order */
+    }
+    .content {
+        display: flex; /* Ensure flexbox is applied */
+        align-items: center; /* Center items along the cross-axis */
+        justify-content: center; /* (Optional) Center items along the main axis */
+        text-align: center; /* (Optional) Align text in the center */
+    }
+}
